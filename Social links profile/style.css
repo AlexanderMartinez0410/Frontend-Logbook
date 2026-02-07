@@ -1,0 +1,116 @@
+:root {
+    --primary-background: hsl(0, 0%, 8%);
+    --card-background: hsl(0, 0%, 12%);
+    --button-background: hsl(0, 0%, 20%);
+    --button-hover-background: hsl(75, 94%, 57%);
+    --text-primary: #FFFFFF;
+    --text-secondary: hsl(75, 94%, 57%);
+    --text-hover: #1F1F1F;
+    --border-radius-card: 12px;
+    --border-radius-button: 8px;
+    --font-family: 'Inter', sans-serif;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-normal: 400;
+}
+
+.container {
+    background-color: var(--primary-background);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 40px;
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 384px;
+    text-align: center;
+    border-radius: var(--border-radius-card);
+}
+
+h1 {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+h2 {
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-bold);
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+p {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 24px;
+}
+
+.btn p {
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: var(--font-weight-semibold);
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 24px;
+    margin-top: 0;
+}
+
+.button {
+    background-color: var(--button-background);
+    margin-top: 16px;
+    border-radius: var(--border-radius-button);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button p {
+    padding: 12px 0;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.button:last-child {
+    margin-bottom: 0;
+}
+
+.button:hover {
+    background-color: var(--button-hover-background);
+}
+
+.button:hover p {
+    color: var(--text-hover);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+    .card {
+        padding: 30px;
+        width: 88%;
+    }
+}
