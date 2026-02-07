@@ -12,11 +12,11 @@ const projects = [
     },
     {
         day: 2,
-        title: "Interactive Card Component",
-        description: "Building an interactive card with animations and state management using vanilla JavaScript.",
-        link: "#",
-        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=300&h=200&fit=crop",
-        status: "in-progress"
+        title: "Recipe Page",
+        description: "A semantic HTML recipe page focusing on appropriate HTML elements for content structure, ensuring proper markup for readability and accessibility.",
+        link: "./Recipe page/index.html",
+        image: "./Recipe page/assets/images/imagenFinal.png",
+        status: "completed"
     },
     {
         day: 3,
@@ -118,4 +118,4 @@ function addProject(project) {
 }
 
 // Console log for debugging
-console.log('Frontend Logbook initialized. Keep coding! 🚀');
+console.log('Frontend Logbook initialized. Keep coding!');

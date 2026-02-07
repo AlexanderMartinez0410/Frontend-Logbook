@@ -26,21 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
             align-items: center;
             gap: 8px;
             padding: 10px 16px;
-            background: #14B8A6;
-            color: #0F172A;
+            background: var(--btn-bg, #14B8A6);
+            color: var(--btn-color, #0F172A);
             text-decoration: none;
             border-radius: 20px;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+            box-shadow: 0 4px 12px var(--btn-shadow, rgba(20, 184, 166, 0.3));
             transition: all 0.3s ease;
             z-index: 1000;
         }
         .back-home-btn:hover {
-            background: #0EA5A4;
+            background: var(--btn-hover-bg, #0EA5A4);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4);
+            box-shadow: 0 6px 16px var(--btn-shadow-hover, rgba(20, 184, 166, 0.4));
         }
         .back-home-btn svg {
             transition: transform 0.3s ease;
@@ -57,6 +57,51 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     `;
+
+    // Function to get luminance
+    function getLuminance(color) {
+        const rgb = color.match(/\d+/g);
+        if (!rgb) return 0.5;
+        const r = parseInt(rgb[0]), g = parseInt(rgb[1]), b = parseInt(rgb[2]);
+        return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    }
+
+    // Detect background and set colors
+    const bodyBg = getComputedStyle(document.body).backgroundColor;
+    const rgbMatch = bodyBg.match(/\d+/g);
+    const root = document.documentElement;
+
+    if (rgbMatch && rgbMatch.length >= 3) {
+        const r = parseInt(rgbMatch[0]), g = parseInt(rgbMatch[1]), b = parseInt(rgbMatch[2]);
+        
+        // Button background: same color with 20% opacity
+        const btnBg = `rgba(${r}, ${g}, ${b}, 0.2)`;
+        
+        // Hover background: same color with 30% opacity
+        const hoverBg = `rgba(${r}, ${g}, ${b}, 0.3)`;
+        
+        // Text color based on original background luminance
+        const originalLuminance = getLuminance(bodyBg);
+        const textColor = originalLuminance > 0.5 ? '#000' : '#fff';
+        
+        // Shadows with low opacity
+        const shadow = `rgba(${r}, ${g}, ${b}, 0.1)`;
+        const shadowHover = `rgba(${r}, ${g}, ${b}, 0.2)`;
+        
+        // Set CSS variables
+        root.style.setProperty('--btn-bg', btnBg);
+        root.style.setProperty('--btn-color', textColor);
+        root.style.setProperty('--btn-hover-bg', hoverBg);
+        root.style.setProperty('--btn-shadow', shadow);
+        root.style.setProperty('--btn-shadow-hover', shadowHover);
+    } else {
+        // Fallback to original colors if background is not RGB
+        root.style.setProperty('--btn-bg', 'rgba(20, 184, 166, 0.2)');
+        root.style.setProperty('--btn-color', '#0F172A');
+        root.style.setProperty('--btn-hover-bg', 'rgba(20, 184, 166, 0.3)');
+        root.style.setProperty('--btn-shadow', 'rgba(20, 184, 166, 0.1)');
+        root.style.setProperty('--btn-shadow-hover', 'rgba(20, 184, 166, 0.2)');
+    }
 
     // Append to body
     document.head.appendChild(style);
