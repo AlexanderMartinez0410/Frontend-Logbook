@@ -20,11 +20,11 @@ const projects = [
     },
     {
         day: 3,
-        title: "Responsive Navigation Menu",
-        description: "Creating a mobile-first navigation menu with smooth transitions and accessibility features.",
-        link: "#",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop",
-        status: "locked"
+        title: "Blog preview card",
+        description: "A blog preview card component that highlights the importance of semantic HTML and accessibility, using appropriate tags and ARIA attributes to enhance user experience.",
+        link: "./Blog preview card/index.html",
+        image: "./Blog preview card/design/desktop-design.jpg",
+        status: "completed"
     },
     // Add more projects as you progress
 ];
