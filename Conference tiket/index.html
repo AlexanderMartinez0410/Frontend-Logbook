@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Conference ticket generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <!-- Form Section -->
+    <section id="form-section" class="form-section" aria-label="Conference ticket registration form">
+      <header class="header">
+        <img src="./assets/images/logo-full.svg" alt="Coding Conf logo" class="logo">
+      </header>
+
+      <div class="content">
+        <h1 class="title">Your Journey to Coding Conf 2025 Starts Here!</h1>
+        <p class="subtitle">Secure your spot at next year's biggest coding conference.</p>
+
+        <form id="ticket-form" class="ticket-form" novalidate>
+          <!-- Avatar Upload -->
+          <div class="form-group">
+            <label for="avatar-input" class="form-label">Upload Avatar</label>
+            <div class="upload-container" id="upload-container">
+              <input 
+                type="file" 
+                id="avatar-input" 
+                accept="image/jpeg,image/jpg,image/png"
+                aria-describedby="avatar-hint avatar-error"
+                class="file-input"
+              >
+              <label for="avatar-input" class="upload-area" id="upload-area">
+                <img src="./assets/images/icon-upload.svg" alt="" class="upload-icon" id="upload-icon">
+                <img src="" alt="Uploaded avatar preview" class="avatar-preview" id="avatar-preview" style="display: none;">
+                <span class="upload-text" id="upload-text">Drag and drop or click to upload</span>
+              </label>
+            </div>
+            <div class="hint" id="avatar-hint">
+              <img src="./assets/images/icon-info.svg" alt="" aria-hidden="true">
+              <span>Upload your photo (JPG or PNG, max size: 500KB).</span>
+            </div>
+            <div class="error-message" id="avatar-error" role="alert" aria-live="polite"></div>
+          </div>
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="full-name" class="form-label">Full Name</label>
+            <input 
+              type="text" 
+              id="full-name" 
+              class="form-input"
+              aria-describedby="full-name-error"
+              aria-required="true"
+            >
+            <div class="error-message" id="full-name-error" role="alert" aria-live="polite"></div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-input"
+              placeholder="example@email.com"
+              aria-describedby="email-error"
+              aria-required="true"
+            >
+            <div class="error-message" id="email-error" role="alert" aria-live="polite"></div>
+          </div>
+
+          <!-- GitHub Username -->
+          <div class="form-group">
+            <label for="github-username" class="form-label">GitHub Username</label>
+            <input 
+              type="text" 
+              id="github-username" 
+              class="form-input"
+              placeholder="@yourusername"
+              aria-describedby="github-error"
+              aria-required="true"
+            >
+            <div class="error-message" id="github-error" role="alert" aria-live="polite"></div>
+          </div>
+
+          <button type="submit" class="submit-btn">Generate My Ticket</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Ticket Section -->
+    <section id="ticket-section" class="ticket-section" style="display: none;" aria-label="Generated conference ticket">
+      <header class="header">
+        <img src="./assets/images/logo-full.svg" alt="Coding Conf logo" class="logo">
+      </header>
+
+      <div class="content">
+        <h1 class="congrats-title">
+          Congrats, <span class="highlight" id="ticket-name"></span>! Your ticket is ready.
+        </h1>
+        <p class="congrats-subtitle">
+          We've emailed your ticket to <span class="email-highlight" id="ticket-email"></span> 
+          and will send updates in the run up to the event.
+        </p>
+
+        <div class="ticket-card">
+          <div class="ticket-header">
+            <img src="./assets/images/logo-mark.svg" alt="" class="ticket-logo">
+            <div class="ticket-info">
+              <h2 class="ticket-event">Coding Conf</h2>
+              <p class="ticket-date">Jan 31, 2025 / Austin, TX</p>
+            </div>
+          </div>
+
+          <div class="ticket-body">
+            <img src="" alt="" class="ticket-avatar" id="ticket-avatar">
+            <div class="ticket-user-info">
+              <p class="ticket-username" id="ticket-display-name"></p>
+              <p class="ticket-github">
+                <img src="./assets/images/icon-github.svg" alt="GitHub" class="github-icon">
+                <span id="ticket-github-username"></span>
+              </p>
+            </div>
+          </div>
+
+          <div class="ticket-number" id="ticket-number">#609</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="../back-home.js"></script>
+
+</body>
+</html>

@@ -26,6 +26,14 @@ const projects = [
         image: "./Blog preview card/design/desktop-design.jpg",
         status: "completed"
     },
+    {
+        day: 4,
+        title:"Conference Ticket",
+        description: "A conference ticket design that emphasizes the use of semantic HTML and accessibility features, ensuring that the content is structured correctly and accessible to all users.",
+        link: "./Conference tiket/index.html",
+        image: "./Conference tiket/assets/images/desktop.png",
+        status: "completed"
+    }
     // Add more projects as you progress
 ];
 
@@ -60,7 +68,7 @@ function renderProjects() {
                 <img src="${project.image}" alt="${project.title} Preview">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
-                <a href="${project.link}" ${project.status === 'locked' ? 'onclick="return false;"' : 'target="_blank"'}>
+                <a href="${project.link}" ${project.status === 'locked' ? 'onclick="return false;"' : ''}>
                     ${project.status === 'completed' ? 'View Project' : project.status === 'in-progress' ? 'Work in Progress' : 'Locked'}
                 </a>
             </div>

@@ -1,0 +1,563 @@
+/* Font Face */
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('./assets/fonts/static/Inconsolata-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('./assets/fonts/static/Inconsolata-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('./assets/fonts/static/Inconsolata-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('./assets/fonts/static/Inconsolata-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* CSS Variables */
+:root {
+  /* Colors */
+  --neutral-0: hsl(0, 0%, 100%);
+  --neutral-300: hsl(252, 6%, 83%);
+  --neutral-500: hsl(245, 15%, 58%);
+  --neutral-700: hsl(245, 19%, 35%);
+  --neutral-900: hsl(248, 70%, 10%);
+  --orange-500: hsl(7, 88%, 67%);
+  --orange-700: hsl(7, 71%, 60%);
+  
+  /* Typography */
+  --font-family: 'Inconsolata', monospace;
+  --font-size-base: 20px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--neutral-0);
+  background-color: var(--neutral-900);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/images/background-mobile.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Background pattern overlays */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url('./assets/images/pattern-lines.svg'),
+    url('./assets/images/pattern-circle.svg');
+  background-position: 
+    left top,
+    right top;
+  background-repeat: no-repeat;
+  background-size: auto, auto;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Container */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Header */
+.header {
+  margin-bottom: 3rem;
+}
+
+.logo {
+  height: 24px;
+  width: auto;
+}
+
+/* Content */
+.content {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Typography */
+.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--neutral-300);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Form */
+.ticket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--neutral-0);
+  letter-spacing: 0.5px;
+}
+
+/* Upload Area */
+.upload-container {
+  position: relative;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2.5rem;
+  border: 2px dashed var(--neutral-500);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 200px;
+  position: relative;
+}
+
+.upload-area:hover {
+  border-color: var(--orange-500);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.upload-area:focus-within {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.upload-area:hover .upload-icon {
+  opacity: 1;
+}
+
+.avatar-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--orange-500);
+}
+
+.upload-text {
+  font-size: 0.875rem;
+  color: var(--neutral-300);
+  text-align: center;
+}
+
+.upload-area.has-file {
+  border-color: var(--orange-500);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Hint */
+.hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--neutral-500);
+  line-height: 1.4;
+}
+
+.hint img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Form Input */
+.form-input {
+  padding: 1rem 1.25rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--neutral-700);
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--neutral-0);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: var(--neutral-500);
+}
+
+.form-input:hover {
+  border-color: var(--neutral-500);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.form-input:focus {
+  border-color: var(--orange-500);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(248, 131, 121, 0.2);
+}
+
+.form-input.error {
+  border-color: var(--orange-500);
+}
+
+/* Error Message */
+.error-message {
+  font-size: 0.75rem;
+  color: var(--orange-500);
+  min-height: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.error-message:empty {
+  display: none;
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, var(--orange-500), var(--orange-700));
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(248, 131, 121, 0.4);
+}
+
+.submit-btn:focus {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Ticket Section */
+.ticket-section {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.congrats-title {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.highlight {
+  background: linear-gradient(90deg, hsl(7, 86%, 67%), var(--neutral-0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.congrats-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--neutral-300);
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.email-highlight {
+  color: var(--orange-500);
+}
+
+/* Ticket Card */
+.ticket-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(100, 90, 150, 0.3), rgba(60, 50, 100, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.ticket-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.ticket-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.ticket-info {
+  flex: 1;
+}
+
+.ticket-event {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--neutral-0);
+  margin-bottom: 0.25rem;
+}
+
+.ticket-date {
+  font-size: 0.875rem;
+  color: var(--neutral-500);
+  font-weight: 400;
+}
+
+.ticket-body {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ticket-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.ticket-user-info {
+  flex: 1;
+}
+
+.ticket-username {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--neutral-0);
+  margin-bottom: 0.5rem;
+}
+
+.ticket-github {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--neutral-300);
+}
+
+.github-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.ticket-number {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--neutral-500);
+  letter-spacing: 1px;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  body::before {
+    background-image: url('./assets/images/background-tablet.png');
+  }
+
+  .container {
+    padding: 3rem 2rem;
+  }
+
+  .content {
+    max-width: 680px;
+  }
+
+  .ticket-form {
+    gap: 2rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  body::before {
+    background-image: url('./assets/images/background-desktop.png');
+  }
+
+  .container {
+    padding: 4rem 3rem;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+  }
+
+  .logo {
+    height: 28px;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    margin-bottom: 4rem;
+  }
+
+  .ticket-form {
+    gap: 2rem;
+  }
+
+  .upload-area {
+    padding: 3rem;
+  }
+
+  .ticket-card {
+    padding: 2.5rem;
+  }
+
+  .congrats-subtitle {
+    margin-bottom: 4rem;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
